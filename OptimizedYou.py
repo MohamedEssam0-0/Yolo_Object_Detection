@@ -10,9 +10,9 @@ def calculate_frames_per_second(speed_km_hr, base_speed=10, increment_speed=10):
     additional_frames = round((speed_km_hr - base_speed) / increment_speed)
     return 1 + additional_frames 
 desired_fps = calculate_frames_per_second(get_current_speed()) 
-model = YOLO('/Users/mohamedshafie/Studies/Masters_Program/Masters_code/env/include/bestworking.pt')
+model = YOLO('/yolo/Yolo_Object_Detection.bestworking.pt')
 class_names = model.names
-cap = cv2.VideoCapture('/Users/mohamedshafie/Studies/Masters_Program/NYC Potholes are next level!.mp4')
+cap = cv2.VideoCapture('/yolo/Yolo_Object_Detection.p.mp4')
 frame_id = 0
 display_frame_counter = 0
 original_fps = round(cap.get(cv2.CAP_PROP_FPS))
