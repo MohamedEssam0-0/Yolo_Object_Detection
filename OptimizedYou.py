@@ -10,21 +10,15 @@ def calculate_frames_per_second(speed_km_hr, base_speed=10, increment_speed=10):
     additional_frames = round((speed_km_hr - base_speed) / increment_speed)
     return 1 + additional_frames 
 desired_fps = calculate_frames_per_second(get_current_speed()) 
-model = YOLO('/yolo/Yolo_Object_Detection/bestworking.pt')
+model = YOLO('/mnt/sdcard/Yolo_Object_Detection/bestworking.pt')
 class_names = model.names
-cap = cv2.VideoCapture('/yolo/Yolo_Object_Detection/p.mp4')
+cap = cv2.VideoCapture('/mnt/sdcard/Yolo_Object_Detection/p.mp4')
 frame_id = 0
 display_frame_counter = 0
 original_fps = round(cap.get(cv2.CAP_PROP_FPS))
 display_interval = max(1, round(original_fps / desired_fps))  
 os.makedirs("saved_frames", exist_ok=True)
 #-------------------------------------------------------------------------------------------------------------------#
-
-
-# Main processing loop
-frame_processing_times = []
-total_start_time = time.time()  # Start time for processing 30 frames
-
 
 #-------------------------------------------------------------------------------------------------------------------#
 # Main processing loop
@@ -36,7 +30,6 @@ while True:
 
     if display_frame_counter % display_interval == 0:
 #-------------------------------------------------------------------------------------------------------------------#
-        start_time = time.time()  # Start time for processing each frame
 #-------------------------------------------------------------------------------------------------------------------#
         results = model(img)  # Get predictions
         if len(results) > 0:
@@ -61,17 +54,6 @@ while True:
         
         
 #-------------------------------------------------------------------------------------------------------------------#        
-        
-        end_time = time.time()  # End time after processing each frame
-        frame_processing_times.append(end_time - start_time)
-
-        if len(frame_processing_times) == 30:
-            total_end_time = time.time()  # End time after processing 30 frames
-            print(f"Seconds between each current and next processed 30 frames: {total_end_time - total_start_time} seconds")
-            print(f"Time to process 30 frames: {total_end_time - total_start_time} seconds")
-            total_start_time = time.time()  # Reset start time for the next 30 frames
-            frame_processing_times = []  # Reset after every 30 frames
-
 #-------------------------------------------------------------------------------------------------------------------#
 
         
