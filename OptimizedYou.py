@@ -18,10 +18,7 @@ display_frame_counter = 0
 original_fps = round(cap.get(cv2.CAP_PROP_FPS))
 display_interval = max(1, round(original_fps / desired_fps))  
 os.makedirs("saved_frames", exist_ok=True)
-#-------------------------------------------------------------------------------------------------------------------#
 
-#-------------------------------------------------------------------------------------------------------------------#
-# Main processing loop
 while True:
     ret, img = cap.read()
     if not ret:
@@ -29,20 +26,19 @@ while True:
 
 
     if display_frame_counter % display_interval == 0:
-#-------------------------------------------------------------------------------------------------------------------#
-#-------------------------------------------------------------------------------------------------------------------#
-        results = model(img)  # Get predictions
-        if len(results) > 0:
-            result = results[0]  # Assuming single image processing, take the first result
-            boxes = result.boxes  # Access the bounding boxes
-            names = result.names  # Access the names dictionary
 
-            # Filter boxes with confidence greater than 0.4
+        results = model(img)  
+        if len(results) > 0:
+            result = results[0]  
+            boxes = result.boxes  
+            names = result.names  
+
+            
             filtered_boxes = [box for box in boxes.data if box[4] > 0.4]
 
             for box in filtered_boxes:
-                class_id = int(box[5])  # Class index
-                class_name = names[class_id]  # Get class name using class index
+                class_id = int(box[5])  
+                class_name = names[class_id]  
                 if class_name != 'Manhole':
                     x1, y1, x2, y2 = int(box[0]), int(box[1]), int(box[2]), int(box[3])
                     cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
@@ -53,8 +49,7 @@ while True:
 
         
         
-#-------------------------------------------------------------------------------------------------------------------#        
-#-------------------------------------------------------------------------------------------------------------------#
+
 
         
         
@@ -71,12 +66,6 @@ while True:
 
 
 
-#-------------------------------------------------------------------------------------------------------------------#
 
-
-
-
-
-#-------------------------------------------------------------------------------------------------------------------#
 cap.release()
 cv2.destroyAllWindows()
