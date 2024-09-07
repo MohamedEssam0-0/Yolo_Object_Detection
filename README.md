@@ -1,39 +1,59 @@
 # Yolo_Object_Detection
 Pothole detection
 
-# Road Surface Deterioration Detection Using YOLOv8
+# Road Surface Deterioration Detection Using AIoT
 
-This project focuses on detecting road surface deterioration using the YOLOv8 model. The LaTeX documents provided here are used to compile the master's thesis, which details the methodology, results, and conclusions of the research.
+Welcome to the Road Surface Deterioration Detection project! This project employs Artificial Intelligence of Things (AIoT) technology to detect and classify road surface deterioration, such as cracks and potholes.
 
 ## Table of Contents
 
-1. [Overview](#overview)
-2. [Project Structure](#project-structure)
-3. [Installation](#installation)
-4. [Usage](#usage)
+1. [Introduction](#introduction)
+2. [Features](#features)
+3. [Project Architecture](#project-architecture)
+4. [Methodology](#methodology)
 5. [Results](#results)
-6. [Contributing](#contributing)
-7. [License](#license)
+6. [Future Work](#future-work)
+7. [Contributing](#contributing)
+8. [License](#license)
 
-## Overview
+## Introduction
 
-The project investigates the application of the YOLOv8 model in detecting various types of road surface damage. The thesis presents a detailed analysis of different model configurations, including image resolution and IoU thresholds, and explores optimization techniques such as network pruning.
+This project investigates the application of AIoT technology specifically focusing on cracks and potholes. Our approach utilizes the "Japan Image Dataset" from Roboflow, applying augmentations to enhance the model's ability to generalize from training data to real-world scenarios.
 
-## Project Structure
+## Features
 
-- `preamble/`: Contains LaTeX preamble files for document setup.
-- `chapters/`: Includes separate LaTeX files for each chapter of the thesis.
-- `appendices/`: Contains appendix files.
-- `Thesis-draft.pdf`: The compiled draft of the thesis.
-- `this_code_is_the_main_code_in_latex.txt`: The main LaTeX file for compiling the thesis.
-- `example.bib`: Bibliography file for references.
+- **Real-Time Detection**: Utilizes YOLO V8 model to detect road damage.
+- **Dynamic Frame Rate Adjustment**: Adjusts frame processing based on vehicle speed.
+- **Microcontroller Integration**: Uses Raspberry Pi 4 and Coral AI Dev Board Mini for efficient processing.
+- **Scalable**: Designed to work across various road types and conditions.
 
-## Installation
+## Project Architecture
 
-To compile the LaTeX document, ensure you have a LaTeX distribution installed on your system. You can use Overleaf or a local LaTeX editor like TeXShop, TeXworks, or others.
+The architecture of the project is divided into two main components:
 
-1. **Clone the repository:**
+1. **Edge Processing Unit**: Includes IoT devices like the Raspberry Pi 4 and Coral AI Dev Board Mini for image capture and initial processing.
+2. **Central Monitoring System**: Collects data from edge devices for further analysis and system validation.
 
-   ```bash
-   git clone https://github.com/yourusername/yourproject.git
-   cd yourproject
+## Methodology
+
+- **Dataset**: Utilizes the "Japan Image Dataset" for training.
+- **Model**: YOLO V8 architecture for object detection.
+- **Real-Time Processing**: Dynamic adjustment of frame rates based on vehicle speed.
+- **IoT Integration**: Uses Raspberry Pi for image capture and Coral AI for inference.
+
+## Results
+
+The model achieved a mean average precision (mAP) of 0.511 with high precision and recall rates, demonstrating robust detection capabilities.
+
+## Future Work
+
+- Implement a mapping system for detected damages.
+- Enhance IoT framework for collaborative detection using multiple vehicles.
+
+## Contributing
+
+Contributions are welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
