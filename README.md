@@ -1,6 +1,3 @@
-# Yolo_Object_Detection
-Pothole detection
-
 # Road Surface Deterioration Detection Using AIoT
 
 Welcome to the Road Surface Deterioration Detection project! This project employs Artificial Intelligence of Things (AIoT) technology to detect and classify road surface deterioration, such as cracks and potholes.
